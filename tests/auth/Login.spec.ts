@@ -1,6 +1,9 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../../pages/login.page';
 
+// Kosongkan session/cookies khusus untuk file ini saja
+test.use({ storageState: { cookies: [], origins: [] } });
+
 test.describe('Pengujian Modul Login (Menggunakan POM)', () => {
   let loginPage: LoginPage;
 

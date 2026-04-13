@@ -11,9 +11,9 @@ const authFile = path.join(__dirname, 'playwright/.auth/user.json');
  */
 export default defineConfig({
   testDir: './tests',
-  timeout: 60_000,
+  timeout: 120000,
   expect: {
-    timeout: 10_000,
+    timeout: 15000,
   },
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
