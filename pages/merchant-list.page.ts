@@ -22,25 +22,15 @@ export class MerchantListPage {
     
     // 1. DAFTAR ELEMEN
     this.menuMerchant = page.getByRole('button', { name: 'Merchant' }).first(); 
-
     this.menuMerchantList = page.getByRole('link', { name: 'Merchant List' });
-
     this.searchInput = page.getByPlaceholder('Search');
-
     this.tableRow = page.locator('tbody tr');
-    
     this.filterMerchantType = page.locator('div').filter({ hasText: /^Merchant Type$/ }).nth(1);
-
     this.filterMerchantCategory = page.getByText('Merchant Category').nth(1);
-
     this.btnColumnVisibility = page.getByText('Column Visibility');
-
     this.btnViewDetail = page.locator('.cursor-pointer.rounded-md');
-
     this.headerMerchantName = page.locator('th').filter({ hasText: 'Name' }).first();
-
     this.btnNextPage = page.getByText('Next'); 
-
     this.btnPrevPage = page.getByText('Previous');
   }
 
@@ -79,7 +69,6 @@ export class MerchantListPage {
 
   async sortByMerchantName() {
     await this.headerMerchantName.click();
-    // Tunggu sebentar agar tabel selesai mengurutkan data
     await this.page.waitForTimeout(1000); 
   }
 
@@ -88,7 +77,6 @@ export class MerchantListPage {
     await this.page.waitForTimeout(1000);
   }
   
-  // --- UBAH FUNGSI INI ---
   async changeEntriesTo5() {
     await this.page.getByText('10').last().click(); 
     await this.page.getByText('5', { exact: true }).last().click(); 

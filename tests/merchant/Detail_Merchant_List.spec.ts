@@ -29,7 +29,7 @@ test.describe('Eksplorasi Fitur Halaman Merchant Detail (POM)', () => {
   test('Eksplorasi Tab Outlet List', async ({ page }) => {
     await merchantDetailPage.openTab('Outlet List');
     
-    // Klik action icon & Toggle (menggunakan locator langsung karena sangat spesifik)
+    // Klik action icon & Toggle
     await page.locator('td > div > .py-3 > .h-4').first().click();
     await page.getByText('Off').first().click();
     

@@ -44,7 +44,7 @@ export class MerchantDetailPage {
   }
 
   async closeModal(modalId: string) {
-    // Menutup modal dengan klik tombol silang (filter hasText empty sesuai rekamanmu)
+    // Menutup modal dengan klik tombol silang 
     await this.page.locator(`#${modalId}`).getByRole('button').filter({ hasText: /^$/ }).click();
   }
 }

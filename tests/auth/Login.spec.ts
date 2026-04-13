@@ -15,7 +15,6 @@ test.describe('Pengujian Modul Login (Menggunakan POM)', () => {
 
   // --- SKENARIO 1: NEGATIVE TEST ---
   test('Negative: Login Gagal karena Password Salah', async ({ page }) => {
-    // Lihat betapa rapinya kode ini sekarang! Cukup panggil fungsi login()
     await loginPage.login(process.env.LOGIN_EMAIL as string, 'passoword salah!');
     
     await expect(page.getByText('Password must have 8+ characters, uppercase, lowercase, number, and symbol')).toBeVisible();

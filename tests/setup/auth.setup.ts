@@ -6,7 +6,7 @@ dotenv.config();
 const authFile = 'playwright/.auth/user.json';
 
 setup('Authenticate once for all tests', async ({ page }) => {
-  // 1. Robot melakukan login seperti biasa SATU KALI
+  // 1. Pergi ke halaman login dan lakukan login menggunakan credential dari .env
   await page.goto(`${process.env.BASE_URL}/login`, { waitUntil: 'domcontentloaded' });
   
   await page.getByRole('textbox', { name: 'Enter your email address' }).click();
@@ -20,6 +20,6 @@ setup('Authenticate once for all tests', async ({ page }) => {
   // 2. Tunggu sampai benar-benar masuk ke Home
   await page.waitForURL('**/home', { timeout: 15000 });
 
-  // 3. INI BAGIAN AJAIBNYA: Simpan semua cookies dan session ke file user.json!
+  // 3. Simpan semua cookies dan session ke file user.json!
   await page.context().storageState({ path: authFile });
 });

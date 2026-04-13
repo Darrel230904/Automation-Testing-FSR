@@ -9,13 +9,14 @@ export class LoginPage {
   constructor(page: Page) {
     this.page = page;
     
-    // 1. DAFTAR ELEMEN (Semua locator dikumpulkan di sini)
+    // 1. DAFTAR ELEMEN 
     this.emailInput = page.getByRole('textbox', { name: 'Enter your email address' });
     this.passwordInput = page.getByRole('textbox', { name: 'Enter your password' });
     this.signInButton = page.getByRole('button', { name: 'Sign In' });
   }
 
   // 2. DAFTAR AKSI/FUNGSI
+  
   // Fungsi untuk buka URL
   async goto() {
     await this.page.goto(`${process.env.BASE_URL}/login`, { timeout: 60000, waitUntil: 'domcontentloaded' });

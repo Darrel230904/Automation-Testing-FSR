@@ -38,10 +38,10 @@ test.describe('Eksplorasi Fitur Halaman Merchant List (POM)', () => {
 
   // --- SKENARIO 4: EDGE CASE SEARCH ---
   test('Fitur Search (Karakter Spesial/Edge Case)', async ({ page }) => {
-    // Mencari menggunakan simbol tidak masuk akal untuk memastikan aplikasi tidak crash/error 500
+    // Mencari menggunakan simbol tidak masuk akal untuk memastikan web tidak crash/error 500
     await merchantListPage.search('@#$!%^&*');
     
-    // Aplikasi harusnya tetap berjalan normal dan menampilkan pesan 'No Merchants Found'
+    // Web tetap berjalan normal dan menampilkan pesan 'No Merchants Found'
     await expect(page.getByText('No Merchants Found')).toBeVisible();
   });
 
