@@ -9,6 +9,9 @@ export class MerchantDetailPage {
   readonly accordionSettlement: Locator;
   readonly searchInput: Locator;
   readonly btnCreateBrand: Locator;
+  readonly modalBrandDetail: Locator;
+  readonly modalCreateBrand: Locator;
+  readonly btnSubmitBrand: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -24,6 +27,9 @@ export class MerchantDetailPage {
     
     this.searchInput = page.getByRole('textbox', { name: 'Search' });
     this.btnCreateBrand = page.getByRole('button', { name: 'Create New Brand' });
+    this.modalBrandDetail = page.locator('#modal-brand-detail');
+    this.modalCreateBrand = page.locator('#modal-create-brand');
+    this.btnSubmitBrand = page.getByRole('button', { name: 'Save', exact: true });
   }
 
   // 2. DAFTAR AKSI/FUNGSI
