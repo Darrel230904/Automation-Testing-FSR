@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { MerchantCategoryPage } from '../../pages/merchant-category.page';
+import { MerchantCategoryPage } from '../../../pages/merchant-category.page';
 
 test.describe('Eksplorasi Halaman Merchant Category (CRUD & Search)', () => {
   let categoryPage: MerchantCategoryPage;

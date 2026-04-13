@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { MerchantListPage } from '../../pages/merchant-list.page';
-import { MerchantDetailPage } from '../../pages/merchant-detail.page';
+import { MerchantListPage } from '../../../pages/merchant-list.page';
+import { MerchantDetailPage } from '../../../pages/merchant-detail.page';
 
 test.describe('Eksplorasi Fitur Halaman Merchant Detail (POM)', () => {
   let merchantListPage: MerchantListPage;

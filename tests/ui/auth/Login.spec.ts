@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '../../pages/login.page';
+import { LoginPage } from '../../../pages/login.page';
 
 // Kosongkan session/cookies khusus untuk file ini saja
 test.use({ storageState: { cookies: [], origins: [] } });
