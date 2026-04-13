@@ -36,4 +36,43 @@ test.describe('Eksplorasi Fitur Halaman Merchant List (POM)', () => {
     await merchantListPage.closeDropdown();
   });
 
+  // --- SKENARIO 4: EDGE CASE SEARCH ---
+  test('Fitur Search (Karakter Spesial/Edge Case)', async ({ page }) => {
+    // Mencari menggunakan simbol tidak masuk akal untuk memastikan aplikasi tidak crash/error 500
+    await merchantListPage.search('@#$!%^&*');
+    
+    // Aplikasi harusnya tetap berjalan normal dan menampilkan pesan 'No Merchants Found'
+    await expect(page.getByText('No Merchants Found')).toBeVisible();
+  });
+
+  // --- SKENARIO 5: FITUR SORTING ---
+  test('Fitur Sorting pada Kolom Tabel', async ({ page }) => {
+    // Simpan teks dari baris pertama SEBELUM di-sort
+    const textSebelumSort = await merchantListPage.tableRow.first().innerText();
+
+    // Klik header untuk mengurutkan (Sort)
+    await merchantListPage.sortByMerchantName();
+
+    // Simpan teks dari baris pertama SESUDAH di-sort
+    const textSesudahSort = await merchantListPage.tableRow.first().innerText();
+
+    // Validasi: Baris pertama harusnya berubah datanya karena urutannya berubah
+    expect(textSebelumSort).not.toEqual(textSesudahSort);
+  });
+
+  // --- SKENARIO 6: FITUR PAGINATION ---
+  test('Fitur Navigasi Halaman (Pagination)', async ({ page }) => {
+    // 1. Ubah jumlah tampilan menjadi 5 data menggunakan klik
+    await merchantListPage.changeEntriesTo5();
+
+    // 2. Pastikan tombol Next sekarang terlihat
+    await expect(merchantListPage.btnNextPage).toBeVisible();
+    
+    // 3. Klik halaman selanjutnya
+    await merchantListPage.goToNextPage();
+
+    // 4. Validasi: Pastikan tabel tetap memunculkan data
+    await expect(merchantListPage.tableRow.first()).toBeVisible();
+  });
+
 });
