@@ -16,6 +16,8 @@ export class MerchantListPage {
   readonly headerMerchantName: Locator;
   readonly btnNextPage: Locator;
   readonly btnPrevPage: Locator;
+  readonly btnConfirmDelete: Locator;
+  readonly toastSuccessDelete: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -32,6 +34,8 @@ export class MerchantListPage {
     this.headerMerchantName = page.locator('th').filter({ hasText: 'Name' }).first();
     this.btnNextPage = page.getByText('Next'); 
     this.btnPrevPage = page.getByText('Previous');
+    this.btnConfirmDelete = page.getByRole('button', { name: 'Delete', exact: true });
+    this.toastSuccessDelete = page.getByText(/deleted successfully/i).first();
   }
 
   // 2. DAFTAR AKSI/FUNGSI
@@ -46,6 +50,7 @@ export class MerchantListPage {
   async search(keyword: string) {
     await this.searchInput.clear();
     await this.searchInput.fill(keyword);
+    await this.page.waitForTimeout(1500);
   }
 
   async selectType(type: string) {
