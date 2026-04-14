@@ -11,7 +11,7 @@ const authFile = path.join(__dirname, 'playwright/.auth/user.json');
  */
 export default defineConfig({
   testDir: './tests',
-  timeout: 120000,
+  timeout: 60000,
   expect: {
     timeout: 15000,
   },
@@ -47,7 +47,6 @@ export default defineConfig({
         ...devices['Desktop Chrome'],
         storageState: authFile,
       },
-      dependencies: ['setup'],
     },
 
     /* Test against mobile viewports. */
